@@ -38,7 +38,6 @@
         ar-modes="webxr scene-viewer"
         camera-controls
         loading="lazy"
-        camera-orbit="45deg 45deg auto"
     ></model-viewer>
 
     <!-- ポップアップ要素 -->
@@ -51,6 +50,8 @@
         // ページロード後にポップアップを表示
         window.addEventListener('load', function() {
             document.getElementById('ar-popup').style.display = 'block';
+            const modelViewer = document.getElementById('ar-model-viewer');
+            modelViewer.cameraOrbit = "45deg 45deg auto"; 
         });
 
         // AR表示を開始する関数
