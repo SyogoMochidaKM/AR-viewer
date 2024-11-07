@@ -61,11 +61,17 @@
             document.getElementById('ar-popup').style.display = 'none'; // ポップアップを非表示に
         }
 
-        // ARモードの状態を監視し、終了したらポップアップを再表示
+        // ARセッションが終了したときに手動でポップアップを再表示する
         document.getElementById('ar-model-viewer').addEventListener('ar-status', function(event) {
             if (event.detail.status === 'session-ended') {
-                document.getElementById('ar-popup').style.display = 'block'; // AR終了後にポップアップを再表示
+                // ARセッションが終了した場合、ポップアップを再表示
+                document.getElementById('ar-popup').style.display = 'block';
             }
+        });
+
+        // モデルビューアのARセッション終了後に、ボタンが再度表示されるように
+        document.getElementById('ar-model-viewer').addEventListener('ar-session-ended', function() {
+            document.getElementById('ar-popup').style.display = 'block'; // AR終了後にポップアップ再表示
         });
     </script>
 </body>
