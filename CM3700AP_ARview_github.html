@@ -29,6 +29,19 @@
             border-radius: 4px;
             cursor: pointer;
         }
+        /* 更新ボタンを右上に配置 */
+        #refresh-button {
+            position: fixed;
+            top: 10px; /* 上から10px */
+            right: 10px; /* 右から10px */
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -47,6 +60,9 @@
         <button onclick="startAR()">Start AR</button>
     </div>
 
+    <!-- ページ更新ボタン -->
+    <button id="refresh-button" onclick="location.reload();">🔄</button>
+
     <script>
         // ページロード後にポップアップを表示
         window.addEventListener('load', function() {
@@ -60,19 +76,6 @@
             document.getElementById('ar-model-viewer').activateAR(); // ARを起動
             document.getElementById('ar-popup').style.display = 'none'; // ポップアップを非表示に
         }
-
-        // ARセッションが終了したときに手動でポップアップを再表示する
-        document.getElementById('ar-model-viewer').addEventListener('ar-status', function(event) {
-            if (event.detail.status === 'session-ended') {
-                // ARセッションが終了した場合、ポップアップを再表示
-                document.getElementById('ar-popup').style.display = 'block';
-            }
-        });
-
-        // モデルビューアのARセッション終了後に、ボタンが再度表示されるように
-        document.getElementById('ar-model-viewer').addEventListener('ar-session-ended', function() {
-            document.getElementById('ar-popup').style.display = 'block'; // AR終了後にポップアップ再表示
-        });
     </script>
 </body>
 </html>
